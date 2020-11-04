@@ -21,6 +21,7 @@ var cityName = ""
 var lat
 var lng 
 var savedCities = []
+var lastCity = ""
 
 
 
@@ -67,11 +68,13 @@ function weatherData() {
 function savecity() {
     var str = JSON.stringify(savedCities)
     localStorage.setItem("cities", str)
+    localStorage.setItem("last city", lastCity)
 }
 //get citys from local storage 
 function getCities() {
     var str = localStorage.getItem('cities')
     savedCities = JSON.parse(str)
+    lastCity = localStorage.getItem("last city")
     if (!savedCities) {
         savedCities = []
     }
@@ -87,33 +90,47 @@ function creatBtn(){
 var cityBtn = $('<button type="click" class="cityBtn"></button>')
     cityBtn.text(cityName)
     $('aside').append(cityBtn)
+    //when user clicks city from history...
+    $('.cityBtn').on('click', function(){
+        console.log(this.textContent)
+        cityName = this.textContent
+        weatherData()
+        lastCity = cityName
+        savecity()
+        console.log(lastCity)
+    })
 }
 //when page loads...
 window.onload = function() {
     getCities()
-    cityName = savedCities[savedCities.length-1]
+    if(lastCity === ""){
+    cityName = lastCity
+    console.log(cityName)
+    } else {
+        cityName = lastCity
+        console.log(cityName)
+    }
     weatherData()
     printSavedCites()
 }
 
+//if search button is clicked the lastCity = input val
+//if citybtn is clicked lastCity = citybtn this textcontent
 
 
 //when user enters a city...
 $('form').on('submit', function(e){
     e.preventDefault()
     cityName = $('input').val().trim()
+    lastCity = cityName
+    console.log(lastCity)
     savedCities.push(cityName)
     console.log(savedCities)
     savecity()
     creatBtn()
     weatherData()
 
-    //when user clicks city from history...
-    $('.cityBtn').on('click', function(){
-        console.log(this.textContent)
-        cityName = this.textContent
-        weatherData()
-    })
+    
 
 
 })
