@@ -14,6 +14,10 @@ WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast
 */
 
+//display date and weather icon next to name in current weather
+//uv index color coding
+//display date and weather icon in 5 day 
+
 var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q="
 var oneCall = "https://api.openweathermap.org/data/2.5/onecall?"
 var key = "&appid=567045e16bb34f6e03d7d4dc194e6660"
@@ -22,8 +26,17 @@ var lat
 var lng 
 var savedCities = []
 var lastCity = ""
+var iconURL = "http://openweathermap.org/img/w/"
+var iconCode = ""
+var iconSpec = ".png"
 
 
+//get date
+
+var today = new Date();
+
+var date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
+console.log(date)
 
 
 //call to get lat & lng, print city name
@@ -33,6 +46,7 @@ function weatherData() {
         method: "GET"
     }).then(function(response) {
         $('.city').html(response.name)
+        $('.date').html(date)
         //change value of lat & lng
         lat = response.coord.lat
         lng = response.coord.lon
@@ -47,22 +61,58 @@ function weatherData() {
             $('.humidity').html("Humidity: " +  response.current.humidity + "%")
             $('.windSpeed').html("Wind Speed: " +  response.current.wind_speed + " MPH")
             $('.uvIndex').html("UV Index: " + response.current.uvi)
+
+            //what color is the uvIndex?
+            
+            if (response.current.uvi < 3) {
+                $('.uvIndex').css("border-color", "chartreuse")
+            } else if (response.current.uvi < 6) {
+                $('.uvIndex').css("border-color", "yellow")
+            } else if (response.current.uvi < 8) {
+                $('.uvIndex').css("border-color", "orange")
+            } else if (response.current.uvi < 11) {
+                $('.uvIndex').css("border-color", "red")
+            } else {
+                $('.uvIndex').css("border-color", "purple")
+            }
+            
+            iconCode = response.current.weather[0].icon
+            console.log(iconCode)
+            $('#weatherIcon').attr('src', iconURL + iconCode + iconSpec)
+            
+
             //emptys five day forcast div
             $('.fiveDay').empty()
             //creates dayCards and prints weather data
             for(var i = 0; i < 5; i++) {
+                var iconCode = response.daily[i].weather[0].icon
                 var dayTemp = (response.daily[i].temp.day - 273.15) * 1.80 + 32;
                 var dayCard = $('<div class="dayCard"></div>')
                 var fiveDay = $(".fiveDay")
+                var fiveDayIcon = iconURL + iconCode + iconSpec
+                var theDay = (today.getDate() + 1)
+                var nextDay = parseInt(theDay) + parseInt([i])
+                console.log(nextDay)
+
+                var newDate = (today.getMonth()+1)+'/'+ nextDay +'/'+today.getFullYear()
+
                 dayCard.html(
+                    newDate +
+                    '<img class="fiveDayIcon" src=' + '"' + fiveDayIcon + '"' + '>' +
                     "Temperature: " + Math.round(dayTemp) + "°F" + "<br>" + 
                     "Humidity: " + response.daily[i].humidity + "%"  
                 )
+            
+        
                 fiveDay.append(dayCard)
             }
+            
         })
     })
 }
+
+
+
 
 //saves to local storage 
 function savecity() {
@@ -129,7 +179,7 @@ $('form').on('submit', function(e){
     savecity()
     creatBtn()
     weatherData()
-
+    
     
 
 

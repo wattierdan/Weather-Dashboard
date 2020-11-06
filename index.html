@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Rokkitt&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/style.css">
     <title>Document</title>
 </head>
@@ -17,15 +18,20 @@
         </form>     
       </aside>
       <main>
+        <h2>Current Weather:</h2>
         <div class="currentWeather">
-            <h2 class="city"></h2>
+            <div class="cardTitle">
+              <h2 class="city"></h2>
+              <img id="weatherIcon" src="" alt="Weather icon">
+            </div>
+            <p class="date"></p>
             <p class="temp"></p>
             <p class="humidity"></p>
             <p class="windSpeed"></p>
-            <p class="uvIndex"></p>
+            <p><span class="uvIndex"></span></p>
         </div>
+        <h2>5 Day Forecast:</h2>
         <div class="fiveDay">
-            <h2>5-Day Forecast:</h2>
         </div>
         
       </main>
