@@ -5,7 +5,7 @@ var cityName = ""
 var lat
 var lng 
 var savedCities = []
-var lastCity = ""
+var lastCity = "Sacramento"
 var iconURL = "http://openweathermap.org/img/w/"
 var iconCode = ""
 var iconSpec = ".png"
