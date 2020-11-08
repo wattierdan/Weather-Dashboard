@@ -35,6 +35,7 @@ function weatherData() {
             var tempF = (response.current.temp - 273.15) * 1.80 + 32;
             $('.temp').html("Temperature: " +  Math.round(tempF) + "°F")
             $('.humidity').html("Humidity: " +  response.current.humidity + "%")
+            $('.weatherIcon').html('<img id="weatherIcon" src="" alt="Weather icon">')
             $('.windSpeed').html("Wind Speed: " +  response.current.wind_speed + " MPH")
             $('.uvIndex').html("UV Index: " + response.current.uvi)
             //what color is the uvIndex?
@@ -127,6 +128,8 @@ window.onload = function() {
 $('form').on('submit', function(e){
     e.preventDefault()
     cityName = $('input').val().trim()
+      
+    
     lastCity = cityName
     console.log(lastCity)
     savedCities.push(cityName)
