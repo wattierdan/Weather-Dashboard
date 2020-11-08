@@ -139,7 +139,7 @@ function printSavedCites(){
 function creatBtn(){
 var cityBtn = $('<button type="click" class="cityBtn"></button>')
     cityBtn.text(cityName)
-    $('aside').append(cityBtn)
+    $('.dropdown-menu').append(cityBtn)
     //when user clicks city from history...
     $('.cityBtn').on('click', function(){
         console.log(this.textContent)
