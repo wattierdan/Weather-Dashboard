@@ -1,7 +1,7 @@
 # Weather-Dashboard
 
 * a weather dashboard that will present user with current weather as well as a 5 day forcast of searched city
-* uses open weather map API 
+* uses openweather API 
 * uv index data is color coded:
   * green = low
   * yellow = medium
