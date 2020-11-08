@@ -4,13 +4,10 @@ body {
     margin: 0;
 }
 
-
-
 .title {
     font-size: 30px;
     text-align: center;
-    padding-right: 20px;
-    
+    padding-right: 20px;  
 }
 
 h2 {
@@ -22,11 +19,6 @@ a {
     font-size: 24px;
 }
 
-form {
-    margin-bottom: 40px;
-}
-
-
 .currentWeather {
     border: whitesmoke solid 2px;
     border-radius: 5px;
@@ -36,14 +28,10 @@ form {
     color: white;
     font-size: 25px;
     width: 100%;
-  
-    margin-bottom: 10px;
-     
+    margin-bottom: 10px; 
 }
 
-
 .fiveDay {
-    
     margin-top: 20px;
 }
 
@@ -61,7 +49,6 @@ form {
 
 .fiveDayIcon{
     display: block;
-   
 }
 
 
@@ -78,8 +65,7 @@ div.dropdown-menu.show {
     border: solid gray 2px;
     outline: none;
     padding: 10px;
-    text-transform: capitalize;
-   
+    text-transform: capitalize; 
 }
 
 .cityBtn:hover{
@@ -102,11 +88,7 @@ text-align: center;
     font-size: 25px;
     margin: 0;
     padding-top: 5px;
-    
 }
-
-
-
 
 p {
     margin-bottom: 10px;
@@ -118,16 +100,7 @@ p {
     .dayCard {
         float: left;
         width: 222px;
-    
-       
-    }
-    
+    }   
 }
 
-@media (min-width: 778px) {
-    .dayCard {
-       
-       
-    }
-}
 
