@@ -13,6 +13,8 @@ orange = high
 red = very high
 <br>
 purple = extreamly high
+
+
 * under prevously searched cities the user will find a list of all of the previous searches
 * when a city from the list is clicked the weather data for that area will be displayed
 * users last search is stored and will load in dashboard when application is opened
