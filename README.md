@@ -3,15 +3,11 @@
 * a weather dashboard that will present user with current weather as well as a 5 day forcast of searched city
 * uses open weather map API 
 * uv index data is color coded:
-green = low
-<br>
-yellow = medium
-<br>
-orange = high
-<br>
-red = very high
-<br>
-purple = extreamly high
+  * green = low
+  * yellow = medium
+  * orange = high
+  * red = very high
+  * purple = extreamly high
 
 
 * under prevously searched cities the user will find a list of all of the previous searches
